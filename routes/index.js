@@ -66,7 +66,7 @@ router.post("/register", upload.single('displaypic') ,function(req,res){
 	// console.log(typeof('1234'))
 	var newUser=new User({username: req.body.username, firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email,avatar:req.body.avatar,avatarid:req.body.avatarid});
 
-			if (req.body.adminCode ==='1234') {
+			if (req.body.adminCode ===process.env.ADMINCODE) {
 				newUser.isAdmin = true;
 			}
 			User.register(newUser,req.body.password,function(err,user){
@@ -314,7 +314,7 @@ router.post('/forgot', function(req, res, next) {
       var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
-          user: 'ashaymishra30111998@gmail.com',
+          user: process.env.GMAILID,
           pass: process.env.GMAILPW
         }
       });

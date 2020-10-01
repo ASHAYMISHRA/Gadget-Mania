@@ -11,7 +11,7 @@
 						<p style="font-size:19px;"><%= gadget.desc %> </p>
 						<br>
 						<br>
-						<p>Submitted By: <a style="font-size:20px" href="/users/<%= gadget.author.id%>"> <%= gadget.author.username %>     </a><span class="pull-right"><%=moment(gadget.createdAt).fromNow() %></span></p>
+						<p>Submitted By: <a style="font-size:20px" href="/users/<%= gadget.author.id%>"> <%= gadget.author.firstname%> <%= gadget.author.lastname%>   </a><span class="pull-right"><%=moment(gadget.createdAt).fromNow() %></span></p>
 						<% if(currentUser && gadget.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin ){ %>
 							<button class="btn btn-warning">
 								<a href="/gadget/<%=gadget._id %>/edit">Edit</a>
