@@ -1,0 +1,59 @@
+<%- include("../partials/header.ejs") %>
+  <div class="row">
+    <div class="col-md-4 card1">
+      <div class="user_profile">
+        <img class="user_profile_pic" src="<%= user.avatar %>" alt="user profile image">
+		  <h1 class="user_name"><%= user.firstname + " " + user.lastname %></h1>
+      </div>
+	<div class="userinfo">
+		<h4> Contact Info </h4>
+		<%if(user.email){%>
+			<p><i class="fas fa-envelope-square"></i>  <%=user.email %></p>
+		<%}%>
+		<%if(user.instaId){%>
+			<p><i class="fab fa-instagram" ></i>  <%=user.instaId %></p>
+		<%}%>
+		<%if(user.twitterId){%>
+			<p><i class="fab fa-twitter"></i>  <%=user.twitterId %></p>
+		<%}%>
+		<%if(user.contactNo){%>
+			<p><i class="fas fa-phone"></i>  <%=user.contactNo %></p>
+		<%}%>
+	</div>
+		<% if(logedinuser && logedinuser._id.equals(profileuser)){ %>
+	<div>
+    <a href="/users/<%=user._id%>/edit">Edit Profile</a>
+  	</div>
+		<%}%>
+    </div>
+	  
+	  
+    <div class="col-md-8  border-left">
+        <h2 class="user_gadget"><%= user.firstname %>'s Gadgets</h2>
+		<br>
+		<br>
+		<ul>
+        <% gadget.forEach(gadget => { %>
+          <!-- <div class="col-md-4 col-sm-6">
+            <div class="thumbnail card">
+              <img src="<%= gadget.img %>" alt="<%= gadget.name %>">
+              <div class="caption">
+                <h4 class="caption"><a href="/gadget/<%= gadget.id %>"><%= gadget.name %></a></h4>
+              </div>
+            </div>
+          </div> -->
+			<div class="col-md-4 col-sm-6 s" style="margin-bottom:50px;">
+			<div class="card2">
+			<img src="<%= gadget.img %>" alt="<%= gadget.name %>" style="width:100%;height:200px;">
+			<!-- <h4><%= gadget.name %></h4> -->
+			<!-- <p><span class="text"><%=gadget.desc %></span></p> -->
+			<form method="get" action="/gadget/<%= gadget.id %>"><button type="submit">More Info</button></form>
+			</div>
+			</div>
+        <% }); %>
+      </ul>
+	 <% if(logedinuser && logedinuser._id.equals(profileuser)){ %>
+    </div>
+  </div>
+<%}%>
+<%- include("../partials/footer.ejs") %>

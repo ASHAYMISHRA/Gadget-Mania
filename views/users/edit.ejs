@@ -1,0 +1,46 @@
+<%- include("../partials/header.ejs") %>
+<div class="row">
+	<h1 style="text-align: center">Edit Profile</h1>
+	<div style="width: 30%; margin: 25px auto;">
+		<form action="/users/<%= logedinuser._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+			
+		  <div class="form-group">
+                <input class="form-control" type="text" name="firstname" placeholder="firstname" autocomplete="off" value="<%= logedinuser.firstname%>" required />
+           </div>
+			<div class="form-group">
+				<input class="form-control" type="text" name="lastname" placeholder="lastname" autocomplete="off" value="<%= logedinuser.lastname%>"required />
+				
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="email" name="email" placeholder="Email" autocomplete="off" value="<%= logedinuser.email%>" required />
+			</div>
+			
+			<div class="form-group">
+				<label for="image">Profile Pic</label>
+                <input type="file" id="image" name="dpp" accept="image/*">
+			</div>
+			
+			<div class="form-group">
+				<input class="form-control" type="text" name="instaId" placeholder="Instagram Username" value="<%= logedinuser.instaId%>" autocomplete="off">
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" name="twitterId" placeholder="Twitter Username"  value="<%= logedinuser.twitterId%>" autocomplete="off">
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="tel" id="phone" name="contactNo" placeholder="Contact Number"   value="<%= logedinuser.contactNo%>"  autocomplete="off" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"><small> Format: 123-456-7890</small>
+			</div>
+			<div class="form-group">
+					<button class="btn btn-lg btn-primary btn-block">Save Profile</button>
+			</div>
+		</form>
+			<form action="/users/<%= logedinuser._id %>?_method=DELETE" method="POST">
+		<input type="submit" class="btn btn-danger btn-xs edit-delete" value="DELETE PROFILE">
+	</form>
+	</div>
+
+</div>
+
+
+
+
+<%- include("../partials/footer.ejs") %>

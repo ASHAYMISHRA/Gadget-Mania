@@ -1,0 +1,31 @@
+<%- include("../partials/header.ejs") %>
+ <% if(currentUser && currentUser.isAdmin){%>
+	<h4 class="admin">Welcome Admin</h4>
+<%}%>
+<header class="jumbotron">
+	<div class="container">
+		<h4><% currentUser %></h4>\
+		<h1>World of Gadgets. </h1>
+		<p>Saw a new Gadget? Fell free to share ..... </p>
+		<p>	<a class="btn btn-primary" href="/gadget/new">Add New Gadget</a></p>
+	</div>
+</header>
+	
+	<div class="row" style="display:flex; flex-wrap:wrap;">
+			<% gadget.forEach(function(camp){ %>
+			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+				<div class="thumbnail">
+					<image class="img-responsive" src="<%= camp.img %>"></image>
+					<div class="caption"><%= camp.name %> 
+					</div>
+					<p class="moreinfo">
+						<a href="/gadget/<%= camp._id%>" class="btn btn-primary btn-sm ">More Info</a>
+					</p>
+				</div>
+				
+				
+			</div>
+<% }) %>
+	</div>
+
+<%- include("../partials/footer.ejs") %>

@@ -1,0 +1,59 @@
+<%- include("../partials/header.ejs") %>
+
+
+		<div class="row">
+			<div class="col-md-9 show_image ">
+				<div class="thumbnail">
+					<img class="image-responsive" style="height:500px;" src="<%=gadget.img %>">
+					<div class="caption-full">
+						<h4 class="gadgetname"><%= gadget.name %> <span class="pull-right price"><%=gadget.price %>$</span></h4>
+						<br>
+						<p style="font-size:19px;"><%= gadget.desc %> </p>
+						<br>
+						<br>
+						<p>Submitted By: <a style="font-size:20px" href="/users/<%= gadget.author.id%>"> <%= gadget.author.username %>     </a><span class="pull-right"><%=moment(gadget.createdAt).fromNow() %></span></p>
+						<% if(currentUser && gadget.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin ){ %>
+							<button class="btn btn-warning">
+								<a href="/gadget/<%=gadget._id %>/edit">Edit</a>
+							</button>
+								<form action="/gadget/<%=gadget._id%>?_method=DELETE" method="POST" class="delete_form">
+									<button class="btn btn-danger">Delete</button>
+								</form>
+						<% }%>
+					</div>
+					
+				</div>
+				<div class="well">
+					<div class="text-right">
+						<span class="text-left">
+							Your Comments are Precious.Add One!
+						</span><a href="/gadget/<%= gadget._id%>/comments/new" class="btn btn-success">Add new comment</a>
+					</div>
+					<hr>
+					<% gadget.comments.forEach(function(comment){ %>
+					<div class="row">
+						<div class="col-md-12">
+							<strong><%=comment.author.username %></strong>
+							<span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
+								<p>
+									<%= comment.text %>
+								</p>
+							<% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+							<button class="btn btn-warning btn-xs edit-delete">
+								<a class="edit-comment" href="/gadget/<%= gadget._id%>/comments/<%=comment._id%>/edit">EDIT</a>
+							</button>
+							<form action="/gadget/<%= gadget._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST"  class="delete_form">
+								<input type="submit" class="btn btn-danger btn-xs edit-delete" value="DELETE">
+							</form>
+							<%}%>
+						</div>
+					</div>
+					<br>
+					<br>
+					<% }) %>
+				</div>
+			</div>
+		</div>
+
+
+<%- include("../partials/footer.ejs") %>

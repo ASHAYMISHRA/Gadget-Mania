@@ -1,0 +1,43 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="row">
+    <h1 style="text-align: center">Sign Up</h1>
+    <div style="width: 30%; margin: 25px auto;">
+        <form action="/register" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <input class="form-control" type="text" name="username" placeholder="username" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="password" autocomplete="off" required />
+            </div>
+			 <div class="form-group">
+                <input class="form-control" type="text" name="firstname" placeholder="firstname" autocomplete="off" required / >
+            </div>
+			 <div class="form-group">
+                <input class="form-control" type="text" name="lastname" placeholder="lastname" autocomplete="off" required />
+            </div>
+			 <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="Email" autocomplete="off" required />
+            </div>
+			<!-- <div class="form-group">
+			 <input class="form-control" type="text" name="avatar" placeholder="avatar url" autocomplete="off" />
+			</div> -->
+			<div class="form-group">
+                <label for="image">Profile Pic</label>
+                <input type="file" id="image" name="displaypic" accept="image/*" required>
+            </div>
+			 
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Sign Up!</button>
+            </div>
+			<br>
+			<div class="form-group">
+                <input class="form-control" type="text" name="adminCode" placeholder="Admin Code">
+            </div>
+        </form>
+        <a href="/gadget">Go Back</a>
+    </div>
+</div>
+
+
+<%- include("./partials/footer.ejs") %>
