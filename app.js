@@ -17,7 +17,9 @@ var commentRoutes=require("./routes/comments"),
 	gadgetRoutes=require("./routes/gadgets"),
 	indexRoutes=require("./routes/index");
 
-mongoose.connect("mongodb://localhost:27017/gadet_db_v16_1",{useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect("mongodb://localhost:27017/gadet_db_v16_1",{useNewUrlParser: true, useUnifiedTopology: true });
+// mongo "mongodb+srv://cluster0.oa2ip.mongodb.net/<dbname>" --username ashaymishra
+mongoose.connect(process.env.DATABASEURL,{useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs');
