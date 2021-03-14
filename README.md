@@ -48,7 +48,7 @@ The Forget Password link sometimes doesnot works because of the security feature
 
 The Wesite is published on Heroku [https://gadget-mania.herokuapp.com/](https://gadget-mania.herokuapp.com/)
 
-##Screenshots
+## Screenshots
 ![Homepage](/assets/screenshots/home.png)
 ![Homepage](/assets/screenshots/landing.png)
 ![Homepage](/assets/screenshots/signup.png)
